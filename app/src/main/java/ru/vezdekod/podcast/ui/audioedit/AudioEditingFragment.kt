@@ -7,16 +7,22 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import ru.vezdekod.podcast.R
+import ru.vezdekod.podcast.ui.data.TimecodeDataSource
 
 class AudioEditingFragment : Fragment() {
+    private var timecodesRecycler: RecyclerView? = null
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? = inflater.inflate(R.layout.fragment_audio_editing, container, false)
 
-    val timecodeViewModel: TimecodeViewModel by viewModels()
+    private val timecodeViewModel: TimecodeViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -25,5 +31,23 @@ class AudioEditingFragment : Fragment() {
             .setOnClickListener {
                 timecodeViewModel.addTimecode()
             }
+
+        initList(view)
+
+        timecodeViewModel.timecodesLiveData.observe(viewLifecycleOwner, Observer{
+            updateList(it)
+        })
+    }
+
+    private fun initList(root: View) {
+        timecodesRecycler = root.findViewById(R.id.timecode_list_recycler)
+        updateList(TimecodeDataSource())
+    }
+
+    private fun updateList(dataSource: TimecodeDataSource) {
+        val linearLayoutManager = LinearLayoutManager(requireContext())
+        val adapter = TimecodeAdapter(dataSource)
+        timecodesRecycler?.layoutManager = linearLayoutManager
+        timecodesRecycler?.adapter = adapter
     }
 }

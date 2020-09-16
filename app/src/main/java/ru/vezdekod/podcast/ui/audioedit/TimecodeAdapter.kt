@@ -6,8 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import ru.vezdekod.podcast.R
 import ru.vezdekod.podcast.ui.data.TimecodeDataSource
 
-class TimecodeAdapter:RecyclerView.Adapter<TimecodeElementHolder>() {
-    val source = TimecodeDataSource()
+class TimecodeAdapter (val source: TimecodeDataSource) : RecyclerView.Adapter<TimecodeElementHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TimecodeElementHolder
      = TimecodeElementHolder(
