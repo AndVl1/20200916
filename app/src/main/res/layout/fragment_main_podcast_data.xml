@@ -202,6 +202,7 @@
             android:paddingBottom="12dp">
 
             <Button
+                android:id="@+id/fragment_main_podcast_data___button___next"
                 style="@style/VkButtonFilled"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

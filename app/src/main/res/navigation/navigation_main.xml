@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_main"
+    app:startDestination="@+id/nav_first">
+
+    <fragment
+        android:id="@+id/nav_first"
+        android:name="ru.vezdekod.podcast.fragments.StartFragment"
+        tools:layout="@layout/fragment_start">
+        <action
+            android:id="@+id/action_nav_first_to_nav_main_podcast_data"
+            app:destination="@id/nav_main_podcast_data" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_main_podcast_data"
+        android:name="ru.vezdekod.podcast.fragments.MainPodcastDataFragment"
+        tools:layout="@layout/fragment_main_podcast_data">
+        <action
+            android:id="@+id/action_nav_main_podcast_data_to_nav_audio_editing"
+            app:destination="@id/nav_audio_editing" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_audio_editing"
+        android:name="ru.vezdekod.podcast.fragments.AudioEditingFragment"
+        tools:layout="@layout/fragment_audio_editing">
+        <action
+            android:id="@+id/action_nav_audio_editing_to_nav_choose_music_effect"
+            app:destination="@id/nav_choose_music_effect" />
+        <action
+            android:id="@+id/action_nav_audio_editing_to_nav_podcast_preview"
+            app:destination="@id/nav_podcast_preview" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_choose_music_effect"
+        android:name="ru.vezdekod.podcast.fragments.ChooseMusicEffectFragment"
+        tools:layout="@layout/fragment_choose_music_effect" />
+
+    <fragment
+        android:id="@+id/nav_podcast_preview"
+        android:name="ru.vezdekod.podcast.fragments.PodcastPreviewFragment"
+        tools:layout="@layout/fragment_podcast_preview">
+        <action
+            android:id="@+id/action_nav_podcast_preview_to_nav_end"
+            app:destination="@id/nav_end" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_end"
+        android:name="ru.vezdekod.podcast.fragments.EndFragment"
+        tools:layout="@layout/fragment_end" />
+</navigation>
