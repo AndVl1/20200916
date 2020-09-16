@@ -59,8 +59,8 @@ class PodcastPreviewFragment : Fragment() {
 
         }
 
-        viewBinding.timecodeList.adapter = adapter
-        viewBinding.timecodeList.layoutManager = LinearLayoutManager(requireContext())
+        viewBinding.timecodeListRecycler.adapter = adapter
+        viewBinding.timecodeListRecycler.layoutManager = LinearLayoutManager(requireContext())
     }
 
     private inner class TimecodeViewHolder(val viewBinding: PreviewTimecodeItemBinding) : RecyclerView.ViewHolder(viewBinding.root)
