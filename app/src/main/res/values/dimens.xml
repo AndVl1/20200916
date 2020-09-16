@@ -17,4 +17,7 @@
     <dimen name="margin_text_delimiter">4dp</dimen>
     <dimen name="snippet_picture_height">140dp</dimen>
     <dimen name="page_content_padding">16dp</dimen>
+
+    <dimen name="vk_podcast_image_preview_size">72dp</dimen>
+    <dimen name="vk_separator_height">0.5dp</dimen>
 </resources>

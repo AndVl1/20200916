@@ -55,31 +55,35 @@
                 android:src="@drawable/ending_blue"
                 android:background="@drawable/vk_button_filled_grey"/>
 
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Таймкоды" />
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/timecode_list_recycler"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <Button
-            android:id="@+id/add_timecode_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/timecode_add" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/timecode_help" />
-
-
     </LinearLayout>
 
-</androidx.core.widget.NestedScrollView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Таймкоды"/>
+
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/timecode_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/add_timecode_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/timecode_add" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/timecode_help"/>
+
+    <Button
+        android:id="@+id/fragment_audio_editing___button___finish_editing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Закончить редактирование" />
+
+</LinearLayout>

@@ -2,17 +2,21 @@ package ru.vezdekod.podcast
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import ru.vezdekod.podcast.ui.audioedit.AudioEditingFragment
+import androidx.navigation.NavController
+import androidx.navigation.NavDirections
+import androidx.navigation.Navigation
 
+class MainActivity : AppCompatActivity(), OnFragmentInteractionListener {
 
-class MainActivity : AppCompatActivity() {
+    private var navController: NavController? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        navController = Navigation.findNavController(this, R.id.nav_host_fragment)
+    }
 
-        val frame = supportFragmentManager.findFragmentById(R.id.main_frame)
-        if (frame != null) return
-        supportFragmentManager.beginTransaction().add(R.id.main_frame, AudioEditingFragment())
-            .commit()
+    override fun onFragmentInteraction(navDirections: NavDirections) {
+        navController!!.navigate(navDirections)
     }
 }

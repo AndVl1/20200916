@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">20200916</string>
+    <string name="podcast_added_action">Поделиться подкастом</string>
+    <string name="podcast_added_title">Подкаст добавлен</string>
+    <string name="podcast_added_subtitle">Расскажите своим подписчикам о новом подкасте, чтобы получить больше слушателей.</string>
+    <string name="podcast_preview_description_block_title">Описание:</string>
+    <string name="podcast_preview_timecodes_block_title">Таймкоды:</string>
+    <string name="podcast_publish">Опубликовать подкаст</string>
+
+    <string name="podcast_create_first_title">Добавьте первый подкаст</string>
+    <string name="podcast_create_first_subtitle">Добавляйте, редактирйте и делитесь подкастами вашего сообщества.</string>
+    <string name="podcast_create_first_action">Добавить подкаст</string>
+</resources>
