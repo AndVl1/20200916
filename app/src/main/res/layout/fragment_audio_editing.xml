@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:valueFrom="0.0"
             android:valueTo="100.0"
-            app:values="@array/initial_slider_values"/>
+            app:values="@array/initial_slider_values" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -30,60 +30,68 @@
                 android:src="@drawable/play_button_icon" />
 
             <ImageButton
+                android:id="@+id/audio_cut"
                 style="@style/VKButtonPodcastEditing"
+                android:background="@drawable/vk_button_filled_grey"
                 android:src="@drawable/cut_button_icon"
-                android:background="@drawable/vk_button_filled_grey"/>
+                android:layout_marginEnd="4dp"/>
 
             <ImageButton
+                android:id="@+id/undo_editing"
                 style="@style/VKButtonPodcastEditing"
                 android:layout_marginEnd="26dp"
-                android:src="@drawable/arrow_uturn_left_outline_24"
-                android:background="@drawable/vk_button_filled_grey"/>
+                android:background="@drawable/vk_button_filled_grey"
+                android:src="@drawable/arrow_uturn_left_outline_24" />
 
             <ImageButton
+                android:id="@+id/add_background_track"
                 style="@style/VKButtonPodcastEditing"
+                android:background="@drawable/vk_button_filled_grey"
                 android:src="@drawable/music_outline_24"
-                android:background="@drawable/vk_button_filled_grey"/>
+                android:layout_marginEnd="4dp" />
 
             <ImageButton
+                android:id="@+id/add_starting"
                 style="@style/VKButtonPodcastEditing"
+                android:background="@drawable/vk_button_filled_grey"
                 android:src="@drawable/starting_blue"
-                android:background="@drawable/vk_button_filled_grey"/>
+                android:layout_marginEnd="4dp" />
 
             <ImageButton
+                android:id="@+id/add_ending"
                 style="@style/VKButtonPodcastEditing"
-                android:src="@drawable/ending_blue"
-                android:background="@drawable/vk_button_filled_grey"/>
+                android:background="@drawable/vk_button_filled_grey"
+                android:src="@drawable/ending_blue" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Таймкоды" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/timecode_list_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/add_timecode_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/timecode_add" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/timecode_help" />
+
+        <Button
+            android:id="@+id/fragment_audio_editing___button___finish_editing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Закончить редактирование" />
 
     </LinearLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Таймкоды"/>
-
-
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/timecode_list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <Button
-        android:id="@+id/add_timecode_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/timecode_add" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/timecode_help"/>
-
-    <Button
-        android:id="@+id/fragment_audio_editing___button___finish_editing"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Закончить редактирование" />
-
-</LinearLayout>
+</androidx.core.widget.NestedScrollView>

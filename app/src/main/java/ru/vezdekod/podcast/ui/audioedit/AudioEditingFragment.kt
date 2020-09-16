@@ -34,7 +34,7 @@ class AudioEditingFragment : Fragment() {
 
         initList(view)
 
-        timecodeViewModel.timecodesLiveData.observe(viewLifecycleOwner, Observer{
+        timecodeViewModel.timecodesLiveData.observe(viewLifecycleOwner, {
             updateList(it)
         })
     }
