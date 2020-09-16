@@ -7,12 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.NavDirections
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ru.vezdekod.podcast.OnFragmentInteractionListener
 import ru.vezdekod.podcast.databinding.FragmentPodcastPreviewBinding
 import ru.vezdekod.podcast.databinding.PreviewTimecodeItemBinding
+import ru.vezdekod.podcast.model.PodcastViewModel
 import java.util.*
 
 class PodcastPreviewFragment : Fragment() {
