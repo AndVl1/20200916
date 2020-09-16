@@ -10,13 +10,14 @@ class TimecodeAdapter:RecyclerView.Adapter<TimecodeElementHolder>() {
     val source = TimecodeDataSource()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TimecodeElementHolder
-     = TimecodeElementHolder(LayoutInflater
-        .from(parent.context)
-        .inflate(R.layout.timecode_element, parent, false)
+     = TimecodeElementHolder(
+        LayoutInflater
+            .from(parent.context)
+            .inflate(R.layout.timecode_element, parent, false)
     )
 
     override fun onBindViewHolder(holder: TimecodeElementHolder, position: Int) {
-        
+
     }
 
     override fun getItemCount(): Int = source.timecodes.size
