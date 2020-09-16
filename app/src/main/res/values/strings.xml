@@ -8,4 +8,7 @@
     <string name="podcast_added_title">Podcast added</string>
     <string name="podcast_added_subtitle">Tell your subscribers about new podcast to gain more listeners.</string>
     <string name="podcast_added_share">Share podcast</string>
+    <string name="podcast_preview_description_block_title">Description:</string>
+    <string name="podcast_preview_timecodes_block_title">Timecodes:</string>
+    <string name="podcast_publish">Publish podcast</string>
 </resources>

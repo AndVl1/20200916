@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.google.android.material.snackbar.Snackbar
 import ru.vezdekod.podcast.databinding.FragmentLastBinding
 
 class LastFragment : Fragment() {
@@ -21,11 +22,11 @@ class LastFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         viewBinding.closeMessageButton.setOnClickListener {
-
+            //TODO return to first screen
         }
 
         viewBinding.sharePodcastButton.setOnClickListener {
-
+            Snackbar.make(it, "Заглушка", Snackbar.LENGTH_SHORT)
         }
     }
 

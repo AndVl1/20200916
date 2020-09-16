@@ -4,4 +4,7 @@
     <string name="podcast_added_share">Поделиться подкастом</string>
     <string name="podcast_added_title">Подкаст добавлен</string>
     <string name="podcast_added_subtitle">Расскажите своим подписчикам о новом подкасте, чтобы получить больше слушателей.</string>
+    <string name="podcast_preview_description_block_title">Описание:</string>
+    <string name="podcast_preview_timecodes_block_title">Таймкоды:</string>
+    <string name="podcast_publish">Опубликовать подкаст</string>
 </resources>
