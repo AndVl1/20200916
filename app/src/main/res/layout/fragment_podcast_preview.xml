@@ -1,12 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    style="@style/VkBaseLayout">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="14dp"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/podcast_image_preview_iv"
+                    style="@style/VkPodcastImagePreview"
+                    android:layout_width="@dimen/vk_podcast_image_preview_size"
+                    android:layout_height="@dimen/vk_podcast_image_preview_size" />
+
+                <ImageButton
+                    android:id="@+id/podcast_play_button"
+                    style="@style/VkPodcastPlayButton"
+                    android:layout_width="@dimen/vk_podcast_image_preview_size"
+                    android:layout_height="@dimen/vk_podcast_image_preview_size" />
+
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/VkPreviewBlockTitle"
+                    android:id="@+id/podcast_title_tv"
+                    android:layout_marginTop="6dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Подкаст прекрасных людей" />
+
+                <TextView
+                    style="@style/VkLink"
+                    android:id="@+id/podcast_publisher_link_tv"
+                    android:layout_marginTop="6dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Сообщество 'ПапаDogs'" />
+
+                <TextView
+                    style="@style/VkTextSecondary"
+                    android:id="@+id/podcast_time_tv"
+                    android:layout_marginTop="6dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Длительность: 59:16" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            style="@style/VkSeparator"
+            android:layout_marginBottom="14dp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/vk_separator_height" />
+
+        <TextView
+            style="@style/VkPreviewBlockTitle"
+            android:layout_marginBottom="14dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/podcast_preview_description_block_title" />
+
+        <TextView
+            android:id="@+id/podcast_description_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:letterSpacing="0.01"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:layout_marginBottom="14dp"
+            tools:text="Подкаст, который рассказывает про то, как много в мире прекрасных вещей, которые можно совершить, а также сколько людей, которые могут помочь вам в реализации ваших заветных мечт." />
+
+        <View
+            style="@style/VkSeparator"
+            android:layout_marginBottom="14dp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/vk_separator_height" />
+
+        <TextView
+            style="@style/VkPreviewBlockTitle"
+            android:layout_marginBottom="14dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/podcast_preview_timecodes_block_title" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/timecode_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
 
     <Button
-        android:id="@+id/fragment_podcast_preview___button___publish_podcast"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Опубликовать подкаст" />
-</LinearLayout>
+        style="@style/VkButtonFilled.Large"
+        android:id="@+id/next_button"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:text="@string/podcast_publish" />
+</RelativeLayout>
