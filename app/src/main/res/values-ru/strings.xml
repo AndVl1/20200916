@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">20200916</string>
+    <string name="podcast_added_share">Поделиться подкастом</string>
+    <string name="podcast_added_title">Подкаст добавлен</string>
+    <string name="podcast_added_subtitle">Расскажите своим подписчикам о новом подкасте, чтобы получить больше слушателей.</string>
+</resources>
