@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text_size_in_full">14sp</dimen>
+    <dimen name="vk_button_horizontal_padding">16dp</dimen>
+    <dimen name="vk_button_vertical_padding">8dp</dimen>
+    <dimen name="vk_button_corner_radius">8dp</dimen>
+    <dimen name="vk_card_corner_radius">8dp</dimen>
+    <dimen name="vk_progress_bar_corner_radius">16dp</dimen>
+    <dimen name="vk_button_outline_border">1dp</dimen>
+    <dimen name="snippet_header_textSize">15sp</dimen>
+    <dimen name="snippet_text_textSize">12sp</dimen>
+    <dimen name="snippet_collected_textSize">13sp</dimen>
+    <dimen name="cardView_margin_top_bottom">8dp</dimen>
+    <dimen name="cardView_margin_start_end">12dp</dimen>
+    <dimen name="padding_name_to_delimiter">7dp</dimen>
+    <dimen name="padding_delimiter_to_collected">12dp</dimen>
+    <dimen name="margin_text_delimiter">4dp</dimen>
+    <dimen name="snippet_picture_height">140dp</dimen>
+    <dimen name="page_content_padding">16dp</dimen>
+</resources>
