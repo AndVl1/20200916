@@ -19,7 +19,7 @@ import java.util.Objects;
 import ru.vezdekod.podcast.OnFragmentInteractionListener;
 import ru.vezdekod.podcast.R;
 
-public class MainPodcastDataFragment extends Fragment {
+public class PodcastPreviewFragment extends Fragment {
 
     private OnFragmentInteractionListener onFragmentInteractionListener;
 
@@ -32,21 +32,21 @@ public class MainPodcastDataFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_main_podcast_data, container, false);
+        return inflater.inflate(R.layout.fragment_podcast_preview, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        view.findViewById(R.id.fragment_main_podcast_data___button___next).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.fragment_podcast_preview___button___publish_podcast).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                NavDirections navDirections = MainPodcastDataFragmentDirections.actionNavMainPodcastDataToNavAudioEditing();
+                NavDirections navDirections = PodcastPreviewFragmentDirections.actionNavPodcastPreviewToNavEnd();
                 onFragmentInteractionListener.onFragmentInteraction(navDirections);
             }
         });
         Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setTitle("Новый подкаст");
+        Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setTitle("Редактирование");
         setHasOptionsMenu(true);
     }
 

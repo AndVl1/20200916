@@ -4,7 +4,7 @@
     <string name="timecode_add">Добавить таймкод</string>
     <string name="timecode_element_text_hint">Название</string>
     <string name="timecode_element_time_hint">Время</string>
-    
+
     <string name="podcast_added_title">Podcast added</string>
     <string name="podcast_added_subtitle">Tell your subscribers about new podcast to gain more listeners.</string>
     <string name="podcast_added_action">Share podcast</string>
@@ -15,4 +15,10 @@
     <string name="podcast_create_first_title">Create your first podcast</string>
     <string name="podcast_create_first_subtitle">Create, edit and share podcast of your group.</string>
     <string name="podcast_create_first_action">Create podcast</string>
+
+    <string name="search">Поиск</string>
+    <string name="add">Add</string>
+    <string name="change_music">Выбрать музыку</string>
+    <string name="back">Back</string>
+    <string name="time_to_song1">3:30</string>
 </resources>
