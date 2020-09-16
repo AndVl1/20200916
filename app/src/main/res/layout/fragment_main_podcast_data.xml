@@ -107,6 +107,7 @@
             </LinearLayout>-->
 
             <Button
+                android:id="@+id/load_audio_button"
                 style="@style/VkButtonOutlined"
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"

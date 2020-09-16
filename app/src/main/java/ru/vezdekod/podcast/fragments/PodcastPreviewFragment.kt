@@ -6,13 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.NavDirections
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import ru.vezdekod.podcast.OnFragmentInteractionListener
 import ru.vezdekod.podcast.databinding.FragmentPodcastPreviewBinding
+import ru.vezdekod.podcast.databinding.PreviewTimecodeItemBinding
+import ru.vezdekod.podcast.model.PodcastViewModel
 
 class PodcastPreviewFragment : Fragment() {
 
     private lateinit var viewBinding: FragmentPodcastPreviewBinding
+    private val viewModel: PodcastViewModel by viewModels({requireActivity()})
 
     private var onFragmentInteractionListener: OnFragmentInteractionListener? = null
 
@@ -35,5 +41,27 @@ class PodcastPreviewFragment : Fragment() {
                 PodcastPreviewFragmentDirections.actionNavPodcastPreviewToNavEnd()
             onFragmentInteractionListener?.onFragmentInteraction(navDirections)
         }
+
+        val adapter = object : RecyclerView.Adapter<TimecodeViewHolder>() {
+            override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TimecodeViewHolder {
+                return TimecodeViewHolder(PreviewTimecodeItemBinding.inflate(
+                    LayoutInflater.from(requireContext()), parent, false))
+            }
+
+            override fun onBindViewHolder(holder: TimecodeViewHolder, position: Int) {
+                holder.viewBinding.timecodeTimeTv.text = viewModel.timecodes[position].time
+                holder.viewBinding.timecodeDescriptionTv.text = viewModel.timecodes[position].name
+            }
+
+            override fun getItemCount(): Int {
+                return viewModel.timecodes.size
+            }
+
+        }
+
+        viewBinding.timecodeListRecycler.adapter = adapter
+        viewBinding.timecodeListRecycler.layoutManager = LinearLayoutManager(requireContext())
     }
+
+    private inner class TimecodeViewHolder(val viewBinding: PreviewTimecodeItemBinding) : RecyclerView.ViewHolder(viewBinding.root)
 }
