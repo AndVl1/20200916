@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import ru.vezdekod.podcast.ui.data.TimecodeData
 import ru.vezdekod.podcast.ui.data.TimecodeDataSource
 
-class TimecodeViewModel: ViewModel() {
+class AudioEditingViewModel: ViewModel() {
 
     val timecodesLiveData = MutableLiveData<TimecodeDataSource>()
     private val timecodes = TimecodeDataSource()
@@ -16,5 +16,6 @@ class TimecodeViewModel: ViewModel() {
 
     fun addTimecode() {
         timecodes.add(TimecodeData("", ""))
+        timecodesLiveData.value = timecodes
     }
 }

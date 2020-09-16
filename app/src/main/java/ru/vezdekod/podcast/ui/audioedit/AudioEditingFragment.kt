@@ -22,7 +22,7 @@ class AudioEditingFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? = inflater.inflate(R.layout.fragment_audio_editing, container, false)
 
-    private val timecodeViewModel: TimecodeViewModel by viewModels()
+    private val timecodeViewModel: AudioEditingViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
