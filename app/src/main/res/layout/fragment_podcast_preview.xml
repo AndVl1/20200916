@@ -102,7 +102,7 @@
             android:text="@string/podcast_preview_timecodes_block_title" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/timecode_list"
+            android:id="@+id/timecode_list_recycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
