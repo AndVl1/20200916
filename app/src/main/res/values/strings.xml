@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">20200916</string>
+    <string name="search">Поиск</string>
+    <string name="add">Add</string>
+    <string name="change_music">Выбрать музыку</string>
+    <string name="back">Back</string>
 </resources>
