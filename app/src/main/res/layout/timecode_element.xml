@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content" android:layout_marginBottom="8dp">
 
     <EditText
-        android:id="@+id/name_input"
+        android:id="@+id/timecode_name_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/VkEditText"
@@ -13,7 +13,7 @@
         android:hint="@string/timecode_element_text_hint"/>
 
     <EditText
-        android:id="@+id/time_input"
+        android:id="@+id/timecode_time_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/VkEditText"
@@ -23,6 +23,7 @@
         />
 
     <ImageButton
+        android:id="@+id/delete_timecode_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/cancel_button_24"

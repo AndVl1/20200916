@@ -1,73 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
+
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
-
-    <com.google.android.material.slider.RangeSlider
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:valueFrom="0.0"
-        android:valueTo="100.0" />
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <ImageButton
-            style="@style/VKButtonPodcastEditing"
-            android:src="@drawable/play_button_icon"
-            android:background="@drawable/vk_button_filled"
-            android:layout_marginEnd="26dp"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
 
-        <ImageButton
-            style="@style/VKButtonPodcastEditing"
-            android:src="@drawable/cut_button_icon"/>
+        <com.google.android.material.slider.RangeSlider
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:valueFrom="0.0"
+            android:valueTo="100.0"
+            app:values="@array/initial_slider_values"/>
 
-        <ImageButton
-            style="@style/VKButtonPodcastEditing"
-            android:src="@drawable/arrow_uturn_left_outline_24"
-            android:layout_marginEnd="26dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-        <ImageButton
-            style="@style/VKButtonPodcastEditing"
-            android:src="@drawable/music_outline_24"/>
+            <ImageButton
+                style="@style/VKButtonPodcastEditing"
+                android:layout_marginEnd="26dp"
+                android:background="@drawable/vk_button_filled"
+                android:src="@drawable/play_button_icon" />
 
-        <ImageButton
-            style="@style/VKButtonPodcastEditing"
-            android:src="@drawable/starting_blue"/>
+            <ImageButton
+                style="@style/VKButtonPodcastEditing"
+                android:src="@drawable/cut_button_icon"
+                android:background="@drawable/vk_button_filled_grey"/>
 
-        <ImageButton
-            style="@style/VKButtonPodcastEditing"
-            android:src="@drawable/ending_blue"/>
+            <ImageButton
+                style="@style/VKButtonPodcastEditing"
+                android:layout_marginEnd="26dp"
+                android:src="@drawable/arrow_uturn_left_outline_24"
+                android:background="@drawable/vk_button_filled_grey"/>
+
+            <ImageButton
+                style="@style/VKButtonPodcastEditing"
+                android:src="@drawable/music_outline_24"
+                android:background="@drawable/vk_button_filled_grey"/>
+
+            <ImageButton
+                style="@style/VKButtonPodcastEditing"
+                android:src="@drawable/starting_blue"
+                android:background="@drawable/vk_button_filled_grey"/>
+
+            <ImageButton
+                style="@style/VKButtonPodcastEditing"
+                android:src="@drawable/ending_blue"
+                android:background="@drawable/vk_button_filled_grey"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Таймкоды" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/timecode_list_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/add_timecode_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/timecode_add" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/timecode_help" />
+
 
     </LinearLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Таймкоды"/>
-
-
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/timecode_list_recycler"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <Button
-        android:id="@+id/add_timecode_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/timecode_add" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/timecode_help"/>
-
-
-
-</LinearLayout>
+</androidx.core.widget.NestedScrollView>
