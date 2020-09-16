@@ -1,4 +1,9 @@
 package ru.vezdekod.podcast.ui.audioedit
 
-class TimecodeViewModel {
+import androidx.lifecycle.ViewModel
+
+class TimecodeViewModel: ViewModel() {
+    fun addTimecode() {
+
+    }
 }

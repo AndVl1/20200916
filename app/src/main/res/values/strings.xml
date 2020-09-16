@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">20200916</string>
+    <string name="timecode_help">Отметки времени с названием темы. Позволяют слушателям легче путешествовать по подкасту.</string>
+    <string name="timecode_add">Добавить таймкод</string>
+    <string name="timecode_element_text_hint">Название</string>
+    <string name="timecode_element_time_hint">Время</string>
 </resources>

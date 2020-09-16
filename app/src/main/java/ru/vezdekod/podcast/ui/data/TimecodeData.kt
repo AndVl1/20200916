@@ -1,4 +1,3 @@
 package ru.vezdekod.podcast.ui.data
 
-class TimecodeData {
-}
+data class TimecodeData (var name: String, var time: String)

@@ -1,6 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <com.google.android.material.slider.RangeSlider
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:valueFrom="0.0"
+        app:valueTo="100.0" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageButton
+            style="@style/VKButtonPodcastEditing"
+            android:src="@drawable/play_button_icon"
+            android:background="@drawable/vk_button_filled"
+            android:layout_marginEnd="26dp"/>
+
+        <ImageButton
+            style="@style/VKButtonPodcastEditing"
+            android:src="@drawable/cut_button_icon"/>
+
+        <ImageButton
+            style="@style/VKButtonPodcastEditing"
+            android:src="@drawable/arrow_uturn_left_outline_24"
+            android:layout_marginEnd="26dp"/>
+
+        <ImageButton
+            style="@style/VKButtonPodcastEditing"
+            android:src="@drawable/music_outline_24"/>
+
+        <ImageButton
+            style="@style/VKButtonPodcastEditing"
+            android:src="@drawable/starting_blue"/>
+
+        <ImageButton
+            style="@style/VKButtonPodcastEditing"
+            android:src="@drawable/ending_blue"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Таймкоды"/>
+
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/timecode_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/add_timecode_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/timecode_add" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/timecode_help"/>
+
+
 
 </LinearLayout>
