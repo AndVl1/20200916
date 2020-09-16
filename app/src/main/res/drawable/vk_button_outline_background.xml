@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<inset xmlns:android="http://schemas.android.com/apk/res/android">
+    <shape android:shape="rectangle">
+        <corners android:radius="@dimen/vk_button_corner_radius" />
+        <stroke
+            android:width="@dimen/vk_button_outline_border"
+            android:color="@color/lightBlue" />
+    </shape>
+</inset>

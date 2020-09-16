@@ -1,73 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
-
-    <com.google.android.material.slider.RangeSlider
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:valueFrom="0.0"
-        android:valueTo="100.0" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <ImageButton
-            style="@style/VKButtonPodcastEditing"
-            android:src="@drawable/play_button_icon"
-            android:background="@drawable/vk_button_filled"
-            android:layout_marginEnd="26dp"/>
-
-        <ImageButton
-            style="@style/VKButtonPodcastEditing"
-            android:src="@drawable/cut_button_icon"/>
-
-        <ImageButton
-            style="@style/VKButtonPodcastEditing"
-            android:src="@drawable/arrow_uturn_left_outline_24"
-            android:layout_marginEnd="26dp"/>
-
-        <ImageButton
-            style="@style/VKButtonPodcastEditing"
-            android:src="@drawable/music_outline_24"/>
-
-        <ImageButton
-            style="@style/VKButtonPodcastEditing"
-            android:src="@drawable/starting_blue"/>
-
-        <ImageButton
-            style="@style/VKButtonPodcastEditing"
-            android:src="@drawable/ending_blue"/>
-
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Таймкоды"/>
-
-
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/timecode_list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+    android:orientation="vertical">
 
     <Button
-        android:id="@+id/add_timecode_button"
-        android:layout_width="match_parent"
+        android:id="@+id/fragment_audio_editing___button___choose_music_effect"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/timecode_add" />
+        android:text="Выбрать эффект" />
 
-    <TextView
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/fragment_audio_editing___button___finish_editing"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/timecode_help"/>
-
-
-
+        android:text="Закончить редактирование" />
 </LinearLayout>
