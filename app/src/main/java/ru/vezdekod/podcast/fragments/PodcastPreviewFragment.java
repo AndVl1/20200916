@@ -3,13 +3,18 @@ package ru.vezdekod.podcast.fragments;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavDirections;
+
+import java.util.Objects;
 
 import ru.vezdekod.podcast.OnFragmentInteractionListener;
 import ru.vezdekod.podcast.R;
@@ -40,5 +45,19 @@ public class PodcastPreviewFragment extends Fragment {
                 onFragmentInteractionListener.onFragmentInteraction(navDirections);
             }
         });
+        Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setTitle("Редактирование");
+        setHasOptionsMenu(true);
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        if (android.R.id.home == item.getItemId()) {
+            /**Навигиция назад*/
+            Toast.makeText(getContext(), "Back", Toast.LENGTH_LONG).show();
+        }
+        return true;
     }
 }

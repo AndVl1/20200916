@@ -7,14 +7,16 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.Objects;
 
 import ru.vezdekod.podcast.R;
 
@@ -32,6 +34,8 @@ public class ChooseMusicEffectFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initViews(view);
+        Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setTitle("Выбрать музыку");
         setHasOptionsMenu(true);
     }
 
@@ -42,18 +46,19 @@ public class ChooseMusicEffectFragment extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate(R.menu.choose_music_menu,menu);
+        inflater.inflate(R.menu.choose_music_menu, menu);
+        MenuItem itemAdd = menu.getItem(0);
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(R.id.action_add==item.getItemId()){
+        if (R.id.action_add == item.getItemId()) {
             /** Добавить трек со своего телефона*/
-            Toast.makeText(getContext(),"Add",Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), "Add", Toast.LENGTH_LONG).show();
         }
-        if(R.id.action_back==item.getItemId()){
-            /** Назад, навигацию настроить*/
-            Toast.makeText(getContext(),"Back",Toast.LENGTH_LONG).show();
+        if (android.R.id.home == item.getItemId()) {
+            /**Навигиция назад*/
+            Toast.makeText(getContext(), "Back", Toast.LENGTH_LONG).show();
         }
         return true;
     }

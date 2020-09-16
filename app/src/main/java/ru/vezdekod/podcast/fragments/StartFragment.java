@@ -8,8 +8,11 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavDirections;
+
+import java.util.Objects;
 
 import ru.vezdekod.podcast.OnFragmentInteractionListener;
 import ru.vezdekod.podcast.R;
@@ -40,5 +43,8 @@ public class StartFragment extends Fragment {
                 onFragmentInteractionListener.onFragmentInteraction(navDirections);
             }
         });
+
+        Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setDisplayHomeAsUpEnabled(false);
     }
+
 }
