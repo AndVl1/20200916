@@ -1,6 +1,212 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="74dp"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:layout_width="74dp"
+                android:layout_height="74dp"
+                android:layout_marginEnd="12dp"
+
+                android:background="@drawable/ic_picture_background">
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_picture" />
+            </FrameLayout>
+
+            <LinearLayout
+                style="@style/VkFormLinearLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    style="@style/VkFormHintTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="1dp"
+                    android:text="Название" />
+
+                <EditText
+                    style="@style/VkEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:hint="Введите название подкаста" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/VkFormLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp">
+
+            <TextView
+                style="@style/VkFormHintTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Описание подкаста" />
+
+            <EditText
+                style="@style/VkEditText"
+                android:layout_width="match_parent"
+                android:layout_height="64dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="196dp"
+            android:orientation="vertical"
+            android:padding="32dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                android:layout_marginBottom="8dp"
+                android:text="Загрузите ваш подкаст"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="8dp"
+                android:text="Выберите готовый аудиофайл из\nвашего телефона и добавьте его"
+                android:textAlignment="center"
+                android:textSize="16sp" />
+
+            <!--<LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:paddingTop="16dp"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    style="@style/VkButtonOutlined"
+                    android:text="Загрузить файл" />
+            </LinearLayout>-->
+
+            <Button
+                style="@style/VkButtonOutlined"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                android:text="Загрузить файл" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="144dp"
+            android:orientation="vertical">
+
+            <include layout="@layout/separator" />
+
+            <CheckBox
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="Ненормативный контент"
+                android:textSize="16sp" />
+
+            <CheckBox
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="Исключить эпизод из экспорта"
+                android:textSize="16sp" />
+
+            <CheckBox
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="Трейлер подкаста"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="38dp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_marginBottom="4dp"
+                    android:text="Кому доступен данный подкаст"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="14dp"
+                    android:text="Всем пользователям"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="48dp"
+                android:layout_height="48dp">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="24dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_chevron_right" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:paddingTop="4dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="При публикации записи с эпизодом, он становится доступным для всех пользователей"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="4dp"
+            android:paddingTop="12dp"
+            android:paddingEnd="4dp"
+            android:paddingBottom="12dp">
+
+            <Button
+                android:id="@+id/fragment_main_podcast_data___button___next"
+                style="@style/VkButtonFilled"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Далее" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

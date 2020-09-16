@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimary">#6200E0</color>
     <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorAccent">#4986CC</color>
+
+    <color name="lightBlue">#3F8AE0</color>
+    <color name="white">#FFFFFF</color>
+
+    <color name="vkEditTextDefaultBackground">#F2F3F5</color>
+    <color name="vkEditTextDefaultStroke">#e0e0e0</color> <!-- Это тот же #00000012 -->
+    <color name="vkEditTextFocusedStroke">#3F8AE0</color>
+    <color name="vkEditTextHint">#818C99</color>
 </resources>
