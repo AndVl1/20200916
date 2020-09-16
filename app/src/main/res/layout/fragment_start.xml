@@ -1,12 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/fragment_start___button___create_podcast"
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        style="@style/VkBaseLayout">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_vk_placeholder_add" />
+
+        <TextView
+            android:gravity="center"
+            android:text="@string/podcast_create_first_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            style="@style/VkMessageTitle"/>
+
+        <TextView
+            android:gravity="center"
+            android:text="@string/podcast_create_first_subtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            style="@style/VkMessageSubtitle"/>
+
+        <Button
+            android:id="@+id/create_podcast_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/podcast_create_first_action"
+            style="@style/VkButtonFilled"/>
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/close_message_button"
+        android:layout_gravity="end"
+        android:src="@drawable/ic_vk_dismiss_24"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Создать подкаст" />
-</LinearLayout>
+        android:minWidth="0dp"
+        style="@style/Widget.AppCompat.Button.Borderless"/>
+</FrameLayout>
