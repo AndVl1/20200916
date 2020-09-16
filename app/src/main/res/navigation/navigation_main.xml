@@ -51,6 +51,10 @@
 
     <fragment
         android:id="@+id/nav_end"
-        android:name="ru.vezdekod.podcast.fragments.EndFragment"
-        tools:layout="@layout/fragment_end" />
+        android:name="ru.vezdekod.podcast.fragments.LastFragment" >
+        <action
+            android:id="@+id/action_nav_end_to_nav_first"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/nav_first" />
+    </fragment>
 </navigation>

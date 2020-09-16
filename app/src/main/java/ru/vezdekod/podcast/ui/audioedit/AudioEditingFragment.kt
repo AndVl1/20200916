@@ -21,9 +21,9 @@ class AudioEditingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.findViewById<Button>(R.id.add_timecode_button)
-            .setOnClickListener {
-                timecodeViewModel.addTimecode()
-            }
+//        view.findViewById<Button>(R.id.add_timecode_button)
+//            .setOnClickListener {
+//                timecodeViewModel.addTimecode()
+//            }
     }
 }
