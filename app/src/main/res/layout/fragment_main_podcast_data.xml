@@ -71,7 +71,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="196dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="32dp">
 
@@ -110,7 +110,7 @@
                 android:id="@+id/load_audio_button"
                 style="@style/VkButtonOutlined"
                 android:layout_width="wrap_content"
-                android:layout_height="36dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="16dp"
                 android:text="Загрузить файл" />

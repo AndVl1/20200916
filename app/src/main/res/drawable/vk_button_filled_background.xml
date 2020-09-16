@@ -2,7 +2,7 @@
 <inset xmlns:android="http://schemas.android.com/apk/res/android">
     <shape
         android:shape="rectangle"
-        android:tint="@color/colorAccent">
+        android:tint="@color/colorSecondary">
         <corners android:radius="@dimen/vk_button_corner_radius" />
     </shape>
 </inset>
