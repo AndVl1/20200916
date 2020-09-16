@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity(), OnFragmentInteractionListener {
         supportActionBar?.setHomeAsUpIndicator(back)
         supportActionBar?.title = ""
         supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.parseColor("#ffffff")))
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(false)
     }
 
     override fun onFragmentInteraction(navDirections: NavDirections) {

@@ -5,15 +5,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.navigation.NavDirections
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ru.vezdekod.podcast.OnFragmentInteractionListener
 import ru.vezdekod.podcast.databinding.FragmentPodcastPreviewBinding
 import ru.vezdekod.podcast.databinding.PreviewTimecodeItemBinding
-import ru.vezdekod.podcast.model.PodcastViewModel
+import java.util.*
 
 class PodcastPreviewFragment : Fragment() {
 
@@ -41,10 +41,15 @@ class PodcastPreviewFragment : Fragment() {
                 PodcastPreviewFragmentDirections.actionNavPodcastPreviewToNavEnd()
             onFragmentInteractionListener?.onFragmentInteraction(navDirections)
         }
+        Objects.requireNonNull((requireActivity() as AppCompatActivity).supportActionBar)
+            ?.setDisplayHomeAsUpEnabled(true)
+        Objects.requireNonNull((requireActivity() as AppCompatActivity).supportActionBar)
+            ?.setTitle("Редактирование")
 
         val adapter = object : RecyclerView.Adapter<TimecodeViewHolder>() {
             override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TimecodeViewHolder {
-                return TimecodeViewHolder(PreviewTimecodeItemBinding.inflate(
+                return TimecodeViewHolder(
+                    PreviewTimecodeItemBinding.inflate(
                     LayoutInflater.from(requireContext()), parent, false))
             }
 
