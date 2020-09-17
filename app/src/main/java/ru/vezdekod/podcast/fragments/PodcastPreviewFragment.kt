@@ -49,6 +49,9 @@ class PodcastPreviewFragment : Fragment() {
     }.root
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        viewBinding.podcastTitleTv.text = viewModel.podcastName
+        viewBinding.podcastDescriptionTv.text = viewModel.podcastDescription
+
         viewBinding.nextButton.setOnClickListener {
             val navDirections: NavDirections =
                 PodcastPreviewFragmentDirections.actionNavPodcastPreviewToNavEnd()

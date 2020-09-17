@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -78,8 +79,17 @@ public class MainPodcastDataFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         viewBinding.fragmentMainPodcastDataButtonNext.setOnClickListener(v -> {
-            NavDirections navDirections = MainPodcastDataFragmentDirections.actionNavMainPodcastDataToNavAudioEditing();
-            onFragmentInteractionListener.onFragmentInteraction(navDirections);
+            String podcastName = viewBinding.fragmentMainPodcastDataEditTextPodcastName.getText().toString();
+            String podcastDescription = viewBinding.fragmentMainPodcastDataEditTextPodcastDescription.getText().toString();
+            if (podcastName.length() != 0 && podcastDescription.length() != 0) {
+                viewModel.setPodcastName(podcastName);
+                viewModel.setPodcastDescription(podcastDescription);
+                NavDirections navDirections = MainPodcastDataFragmentDirections.actionNavMainPodcastDataToNavAudioEditing();
+                onFragmentInteractionListener.onFragmentInteraction(navDirections);
+            }
+            else {
+                Toast.makeText(requireActivity(), "Должны быть заполнены название и описание",  Toast.LENGTH_SHORT).show();
+            }
         });
 
         viewBinding.loadAudioButton.setOnClickListener(v -> {
