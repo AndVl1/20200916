@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:overScrollMode="never"
+    android:scrollbars="none">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -67,10 +69,13 @@
             <EditText
                 style="@style/VkEditText"
                 android:layout_width="match_parent"
-                android:layout_height="64dp" />
+                android:layout_height="wrap_content"
+                android:minHeight="64dp"
+                android:scrollHorizontally="true" />
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/fragment_main_podcast_data___linear_layout___load_audio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -78,7 +83,7 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="24dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:text="Загрузите ваш подкаст"
                 android:textAlignment="center"
@@ -87,25 +92,11 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:text="Выберите готовый аудиофайл из\nвашего телефона и добавьте его"
                 android:textAlignment="center"
                 android:textSize="16sp" />
-
-            <!--<LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:paddingTop="16dp"
-                android:orientation="vertical"
-                android:gravity="center">
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="36dp"
-                    style="@style/VkButtonOutlined"
-                    android:text="Загрузить файл" />
-            </LinearLayout>-->
 
             <Button
                 android:id="@+id/load_audio_button"
@@ -116,6 +107,75 @@
                 android:layout_marginTop="16dp"
                 android:text="Загрузить файл" />
         </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/fragment_main_podcast_data___linear_layout___audio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="22dp"
+            android:paddingBottom="22dp"
+            android:visibility="gone">
+
+
+            <LinearLayout
+                android:id="@+id/fragment_donation_type___button___create_regular_donation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/icon"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="12dp"
+                    android:src="@drawable/music_icon" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/mainText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Song.mp3"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="36dp"
+                    android:layout_height="match_parent"
+
+                    android:gravity="center"
+                    android:text="@string/time_to_song1"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="18dp"
+                android:text="Вы можете добавить таймкоды и скорректировать подкаст в режиме редактирования"
+                android:textSize="13sp" />
+
+            <Button
+                android:id="@+id/fragment_main_podcast_data___button___audio_editing"
+                style="@style/VkButtonOutlined"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Редактировать аудиозапись" />
+
+        </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -153,14 +213,14 @@
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="38dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="20dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginBottom="4dp"
                     android:text="Кому доступен данный подкаст"
                     android:textColor="@android:color/black"

@@ -28,7 +28,7 @@ class PodcastPreviewFragment : Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         onFragmentInteractionListener = context as? OnFragmentInteractionListener
-        onFragmentInteractionListener?.setBackDirection(PodcastPreviewFragmentDirections.actionNavPodcastPreviewToNavAudioEditing())
+        onFragmentInteractionListener?.setBackDirection(PodcastPreviewFragmentDirections.actionNavPodcastPreviewToNavMainPodcastData())
     }
 
     override fun onResume() {
