@@ -16,8 +16,6 @@ import ru.vezdekod.podcast.R
 import ru.vezdekod.podcast.databinding.FragmentPodcastPreviewBinding
 import ru.vezdekod.podcast.databinding.PreviewTimecodeItemBinding
 import ru.vezdekod.podcast.model.PodcastViewModel
-import ru.vezdekod.podcast.ui.audioedit.AudioEditingFragmentDirections
-import java.util.*
 
 class PodcastPreviewFragment : Fragment() {
 
@@ -37,6 +35,7 @@ class PodcastPreviewFragment : Fragment() {
         (requireActivity() as AppCompatActivity).supportActionBar?.apply {
             setTitle(R.string.screen_title_new_podcast)
             show()
+            setDisplayHomeAsUpEnabled(true)
         }
     }
 
@@ -82,7 +81,8 @@ class PodcastPreviewFragment : Fragment() {
         viewBinding.timecodeListRecycler.layoutManager = LinearLayoutManager(requireContext())
     }
 
-    private inner class TimecodeViewHolder(val viewBinding: PreviewTimecodeItemBinding) : RecyclerView.ViewHolder(
-        viewBinding.root
-    )
+    private inner class TimecodeViewHolder(val viewBinding: PreviewTimecodeItemBinding) :
+        RecyclerView.ViewHolder(
+            viewBinding.root
+        )
 }
