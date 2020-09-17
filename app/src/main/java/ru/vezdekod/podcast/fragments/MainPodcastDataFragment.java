@@ -107,11 +107,16 @@ public class MainPodcastDataFragment extends Fragment {
             if (podcastName.length() != 0 && podcastDescription.length() != 0) {
                 viewModel.setPodcastName(podcastName);
                 viewModel.setPodcastDescription(podcastDescription);
-                NavDirections navDirections = MainPodcastDataFragmentDirections.actionNavMainPodcastDataToNavAudioEditing();
+                NavDirections navDirections = MainPodcastDataFragmentDirections.actionNavMainPodcastDataToNavPodcastPreview();
                 onFragmentInteractionListener.onFragmentInteraction(navDirections);
             } else {
                 Toast.makeText(requireActivity(), "Должны быть заполнены название и описание", Toast.LENGTH_SHORT).show();
             }
+        });
+
+        viewBinding.fragmentMainPodcastDataButtonAudioEditing.setOnClickListener(v -> {
+            NavDirections navDirections = MainPodcastDataFragmentDirections.actionNavMainPodcastDataToNavAudioEditing();
+            onFragmentInteractionListener.onFragmentInteraction(navDirections);
         });
 
         viewBinding.loadAudioButton.setOnClickListener(v -> {

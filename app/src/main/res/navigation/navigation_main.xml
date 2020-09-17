@@ -24,6 +24,9 @@
         <action
             android:id="@+id/action_nav_main_podcast_data_to_nav_first"
             app:destination="@id/nav_first" />
+        <action
+            android:id="@+id/action_nav_main_podcast_data_to_nav_podcast_preview"
+            app:destination="@id/nav_podcast_preview" />
     </fragment>
 
     <fragment
@@ -34,9 +37,6 @@
             android:id="@+id/action_nav_audio_editing_to_nav_choose_music_effect"
             app:destination="@id/nav_choose_music_effect" />
         <action
-            android:id="@+id/action_nav_audio_editing_to_nav_podcast_preview"
-            app:destination="@id/nav_podcast_preview" />
-        <action
             android:id="@+id/action_nav_audio_editing_to_nav_main_podcast_data"
             app:destination="@id/nav_main_podcast_data" />
     </fragment>
@@ -44,7 +44,7 @@
     <fragment
         android:id="@+id/nav_choose_music_effect"
         android:name="ru.vezdekod.podcast.fragments.ChooseMusicEffectFragment"
-        tools:layout="@layout/fragment_choose_music_effect" >
+        tools:layout="@layout/fragment_choose_music_effect">
         <action
             android:id="@+id/action_nav_choose_music_effect_to_nav_audio_editing"
             app:destination="@id/nav_audio_editing" />
@@ -58,13 +58,13 @@
             android:id="@+id/action_nav_podcast_preview_to_nav_end"
             app:destination="@id/nav_end" />
         <action
-            android:id="@+id/action_nav_podcast_preview_to_nav_audio_editing"
-            app:destination="@id/nav_audio_editing" />
+            android:id="@+id/action_nav_podcast_preview_to_nav_main_podcast_data"
+            app:destination="@id/nav_main_podcast_data" />
     </fragment>
 
     <fragment
         android:id="@+id/nav_end"
-        android:name="ru.vezdekod.podcast.fragments.LastFragment" >
+        android:name="ru.vezdekod.podcast.fragments.LastFragment">
         <action
             android:id="@+id/action_nav_end_to_nav_first"
             app:destination="@id/nav_first"
