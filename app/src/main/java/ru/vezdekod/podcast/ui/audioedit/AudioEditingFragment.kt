@@ -54,7 +54,7 @@ class AudioEditingFragment : Fragment() {
 
         viewBinding.fragmentAudioEditingButtonFinishEditing.setOnClickListener {
             val navDirections: NavDirections =
-                AudioEditingFragmentDirections.actionNavAudioEditingToNavPodcastPreview()
+                AudioEditingFragmentDirections.actionNavAudioEditingToNavMainPodcastData()
             onFragmentInteractionListener?.onFragmentInteraction(navDirections)
         }
 

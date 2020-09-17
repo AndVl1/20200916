@@ -27,7 +27,7 @@ class PodcastPreviewFragment : Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         onFragmentInteractionListener = context as? OnFragmentInteractionListener
-        onFragmentInteractionListener?.setBackDirection(PodcastPreviewFragmentDirections.actionNavPodcastPreviewToNavAudioEditing())
+        onFragmentInteractionListener?.setBackDirection(PodcastPreviewFragmentDirections.actionNavPodcastPreviewToNavMainPodcastData())
     }
 
     override fun onResume() {
@@ -48,6 +48,10 @@ class PodcastPreviewFragment : Fragment() {
     }.root
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        viewBinding.podcastTitleTv.text = viewModel.podcastName
+        viewBinding.podcastDescriptionTv.text = viewModel.podcastDescription
+        viewBinding.podcastImagePreviewIv.setImageBitmap(viewModel.podcastImage)
+
         viewBinding.nextButton.setOnClickListener {
             val navDirections: NavDirections =
                 PodcastPreviewFragmentDirections.actionNavPodcastPreviewToNavEnd()
