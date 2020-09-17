@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavDirections
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import ru.vezdekod.podcast.OnFragmentInteractionListener
 import ru.vezdekod.podcast.R
 import ru.vezdekod.podcast.databinding.FragmentAudioEditingBinding
+import ru.vezdekod.podcast.fragments.MainPodcastDataFragmentDirections
 import ru.vezdekod.podcast.model.PodcastViewModel
 import ru.vezdekod.podcast.ui.data.TimecodeDataSource
 
@@ -25,6 +27,11 @@ class AudioEditingFragment : Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         onFragmentInteractionListener = context as? OnFragmentInteractionListener
+        onFragmentInteractionListener?.setBackDirection(AudioEditingFragmentDirections.actionNavAudioEditingToNavMainPodcastData())
+        (requireActivity() as AppCompatActivity).supportActionBar?.apply {
+            setTitle(R.string.screen_title_audio_edit)
+            show()
+        }
     }
 
     override fun onCreateView(

@@ -204,9 +204,8 @@
 
             <Button
                 android:id="@+id/fragment_main_podcast_data___button___next"
-                style="@style/VkButtonFilled"
+                style="@style/VkButtonFilled.Large"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:text="Далее" />
         </LinearLayout>
     </LinearLayout>

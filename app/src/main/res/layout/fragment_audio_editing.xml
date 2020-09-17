@@ -79,7 +79,6 @@
         <Button
             android:id="@+id/add_timecode_button"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             style="@style/VkButtonFilled"
             android:text="@string/timecode_add" />
 
@@ -91,8 +90,7 @@
         <Button
             android:id="@+id/fragment_audio_editing___button___finish_editing"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/VkButtonFilled"
+            style="@style/VkButtonFilled.Large"
             android:text="Закончить редактирование" />
 
     </LinearLayout>

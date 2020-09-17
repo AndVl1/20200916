@@ -12,21 +12,32 @@ import androidx.navigation.NavDirections
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ru.vezdekod.podcast.OnFragmentInteractionListener
+import ru.vezdekod.podcast.R
 import ru.vezdekod.podcast.databinding.FragmentPodcastPreviewBinding
 import ru.vezdekod.podcast.databinding.PreviewTimecodeItemBinding
 import ru.vezdekod.podcast.model.PodcastViewModel
+import ru.vezdekod.podcast.ui.audioedit.AudioEditingFragmentDirections
 import java.util.*
 
 class PodcastPreviewFragment : Fragment() {
 
     private lateinit var viewBinding: FragmentPodcastPreviewBinding
-    private val viewModel: PodcastViewModel by viewModels({requireActivity()})
+    private val viewModel: PodcastViewModel by viewModels({ requireActivity() })
 
     private var onFragmentInteractionListener: OnFragmentInteractionListener? = null
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
         onFragmentInteractionListener = context as? OnFragmentInteractionListener
+        onFragmentInteractionListener?.setBackDirection(PodcastPreviewFragmentDirections.actionNavPodcastPreviewToNavAudioEditing())
+    }
+
+    override fun onResume() {
+        super.onResume()
+        (requireActivity() as AppCompatActivity).supportActionBar?.apply {
+            setTitle(R.string.screen_title_new_podcast)
+            show()
+        }
     }
 
     override fun onCreateView(
@@ -43,16 +54,14 @@ class PodcastPreviewFragment : Fragment() {
                 PodcastPreviewFragmentDirections.actionNavPodcastPreviewToNavEnd()
             onFragmentInteractionListener?.onFragmentInteraction(navDirections)
         }
-        Objects.requireNonNull((requireActivity() as AppCompatActivity).supportActionBar)
-            ?.setDisplayHomeAsUpEnabled(true)
-        Objects.requireNonNull((requireActivity() as AppCompatActivity).supportActionBar)
-            ?.setTitle("Редактирование")
 
         val adapter = object : RecyclerView.Adapter<TimecodeViewHolder>() {
             override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TimecodeViewHolder {
                 return TimecodeViewHolder(
                     PreviewTimecodeItemBinding.inflate(
-                    LayoutInflater.from(requireContext()), parent, false))
+                        LayoutInflater.from(requireContext()), parent, false
+                    )
+                )
             }
 
             override fun onBindViewHolder(holder: TimecodeViewHolder, position: Int) {
@@ -70,5 +79,7 @@ class PodcastPreviewFragment : Fragment() {
         viewBinding.timecodeListRecycler.layoutManager = LinearLayoutManager(requireContext())
     }
 
-    private inner class TimecodeViewHolder(val viewBinding: PreviewTimecodeItemBinding) : RecyclerView.ViewHolder(viewBinding.root)
+    private inner class TimecodeViewHolder(val viewBinding: PreviewTimecodeItemBinding) : RecyclerView.ViewHolder(
+        viewBinding.root
+    )
 }

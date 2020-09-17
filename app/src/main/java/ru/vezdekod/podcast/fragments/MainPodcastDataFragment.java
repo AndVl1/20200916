@@ -16,6 +16,8 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavDirections;
@@ -45,6 +47,7 @@ public class MainPodcastDataFragment extends Fragment {
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         onFragmentInteractionListener = (OnFragmentInteractionListener) context;
+        onFragmentInteractionListener.setBackDirection(MainPodcastDataFragmentDirections.actionNavMainPodcastDataToNavFirst());
     }
 
     @Nullable
@@ -52,6 +55,16 @@ public class MainPodcastDataFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         viewBinding = FragmentMainPodcastDataBinding.inflate(inflater, container, false);
         return viewBinding.getRoot();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ActionBar actionBar = ((AppCompatActivity) requireActivity()).getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setTitle(R.string.screen_title_new_podcast);
+            actionBar.show();
+        }
     }
 
     @Override
