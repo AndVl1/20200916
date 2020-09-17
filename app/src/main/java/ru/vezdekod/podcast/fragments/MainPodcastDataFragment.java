@@ -49,6 +49,8 @@ public class MainPodcastDataFragment extends Fragment {
     private OnFragmentInteractionListener onFragmentInteractionListener;
     private FragmentMainPodcastDataBinding viewBinding;
     private PodcastViewModel viewModel;
+    private static final int REQUEST_CODE_MUSIC = 666;
+    private static final int REQUEST_CODE_IMAGE = 111;
 
     private static final int PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 22;
 
