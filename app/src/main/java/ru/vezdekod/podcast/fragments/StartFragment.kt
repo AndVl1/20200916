@@ -10,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavDirections
 import ru.vezdekod.podcast.OnFragmentInteractionListener
-import ru.vezdekod.podcast.R
 import ru.vezdekod.podcast.databinding.FragmentStartBinding
 
 class StartFragment : Fragment() {

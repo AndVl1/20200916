@@ -1,6 +1,7 @@
 package ru.vezdekod.podcast.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -45,6 +46,7 @@ public class ChooseMusicEffectFragment extends Fragment {
         if (actionBar != null) {
             actionBar.setTitle(R.string.screen_title_choose_music);
             actionBar.show();
+            actionBar.setDisplayHomeAsUpEnabled(true);
         }
     }
 
@@ -77,11 +79,11 @@ public class ChooseMusicEffectFragment extends Fragment {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (R.id.action_add == item.getItemId()) {
-            /** Добавить трек со своего телефона*/
-            Toast.makeText(getContext(), "Add", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+            intent.setType("audio/*");
+            startActivityForResult(Intent.createChooser(intent, "Select audio"), 666);
         }
         if (android.R.id.home == item.getItemId()) {
-            /**Навигиция назад*/
             Toast.makeText(getContext(), "Back", Toast.LENGTH_LONG).show();
         }
         return true;

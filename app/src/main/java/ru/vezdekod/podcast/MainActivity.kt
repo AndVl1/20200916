@@ -27,8 +27,6 @@ class MainActivity : AppCompatActivity(), OnFragmentInteractionListener {
             setHomeAsUpIndicator(back)
             title = ""
             setBackgroundDrawable(ColorDrawable(Color.parseColor("#ffffff")))
-            setDisplayHomeAsUpEnabled(true)
-            setShowHideAnimationEnabled(false)
         }
     }
 
@@ -36,7 +34,7 @@ class MainActivity : AppCompatActivity(), OnFragmentInteractionListener {
         backDirection?.also { navController?.navigate(it) }
         val res = backDirection != null
         backDirection = null
-        return  res
+        return res
     }
 
     override fun onFragmentInteraction(navDirections: NavDirections) {

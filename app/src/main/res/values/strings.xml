@@ -16,11 +16,11 @@
     <string name="podcast_create_first_subtitle">Create, edit and share podcast of your group.</string>
     <string name="podcast_create_first_action">Create podcast</string>
 
-    <string name="search">Поиск</string>
+    <string name="search">Search</string>
     <string name="add">Add</string>
-    <string name="change_music">Выбрать музыку</string>
+    <string name="change_music">Choose music</string>
     <string name="back">Back</string>
-    <string name="time_to_song1">3:30</string>
+    <string name="time_to_song1" translatable="false">3:30</string>
 
     <string name="screen_title_new_podcast">New podcast</string>
     <string name="screen_title_audio_edit">Edit</string>
