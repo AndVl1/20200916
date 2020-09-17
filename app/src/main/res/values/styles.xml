@@ -1,12 +1,16 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorOnPrimary">@color/white</item>
         <item name="colorPrimaryDark">#f1f1f1</item>
         <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
         <item name="colorSecondary">@color/colorSecondary</item>
+    </style>
+
+    <style name="AppTheme.ActionBar.TitleTextStyle" parent="Widget.MaterialComponents.Toolbar">
+        <item name="android:textColor">@color/colorBlack</item>
     </style>
 
     <style name="VKButtonPodcastEditing" parent="Widget.AppCompat.Button">

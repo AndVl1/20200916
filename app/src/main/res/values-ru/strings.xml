@@ -11,4 +11,13 @@
     <string name="podcast_create_first_title">Добавьте первый подкаст</string>
     <string name="podcast_create_first_subtitle">Добавляйте, редактирйте и делитесь подкастами вашего сообщества.</string>
     <string name="podcast_create_first_action">Добавить подкаст</string>
+
+    <string name="search">Поиск</string>
+    <string name="add">Добавить</string>
+    <string name="change_music">Выбрать музыку</string>
+    <string name="back">Назад</string>
+
+    <string name="screen_title_new_podcast">Новый подкаст</string>
+    <string name="screen_title_audio_edit">Редактирование</string>
+    <string name="screen_title_choose_music">Выбрать музыку</string>
 </resources>

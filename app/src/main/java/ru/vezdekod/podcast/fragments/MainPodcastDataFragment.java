@@ -1,15 +1,10 @@
 package ru.vezdekod.podcast.fragments;
 
-import android.content.ContentProvider;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.ParcelFileDescriptor;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,15 +17,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavDirections;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileDescriptor;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.util.Objects;
 
 import ru.vezdekod.podcast.OnFragmentInteractionListener;
 import ru.vezdekod.podcast.R;
@@ -62,8 +49,9 @@ public class MainPodcastDataFragment extends Fragment {
         super.onResume();
         ActionBar actionBar = ((AppCompatActivity) requireActivity()).getSupportActionBar();
         if (actionBar != null) {
-            actionBar.setTitle(R.string.screen_title_new_podcast);
+            actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.show();
+            actionBar.setTitle(R.string.screen_title_new_podcast);
         }
     }
 
