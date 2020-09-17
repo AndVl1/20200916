@@ -45,6 +45,7 @@
                     android:text="Название" />
 
                 <EditText
+                    android:id="@+id/podcast_name_tv"
                     style="@style/VkEditText"
                     android:layout_width="match_parent"
                     android:layout_height="44dp"
@@ -67,6 +68,7 @@
                 android:text="Описание подкаста" />
 
             <EditText
+                android:id="@+id/podcast_description_tv"
                 style="@style/VkEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

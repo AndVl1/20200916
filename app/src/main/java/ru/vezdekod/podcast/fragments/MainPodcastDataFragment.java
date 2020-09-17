@@ -104,7 +104,7 @@ public class MainPodcastDataFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        viewBinding.fragmentMainPodcastDataImageButtonLoadImage.setOnClickListener(v -> {
+        viewBinding.loadImage.setOnClickListener(v -> {
             if (ContextCompat.checkSelfPermission(requireActivity(),
                     Manifest.permission.READ_EXTERNAL_STORAGE)
                     != PackageManager.PERMISSION_GRANTED) {
@@ -118,8 +118,8 @@ public class MainPodcastDataFragment extends Fragment {
         });
 
         viewBinding.fragmentMainPodcastDataButtonNext.setOnClickListener(v -> {
-            String podcastName = viewBinding.fragmentMainPodcastDataEditTextPodcastName.getText().toString();
-            String podcastDescription = viewBinding.fragmentMainPodcastDataEditTextPodcastDescription.getText().toString();
+            String podcastName = viewBinding.podcastNameTv.getText().toString();
+            String podcastDescription = viewBinding.podcastDescriptionTv.getText().toString();
             if (podcastName.length() != 0 && podcastDescription.length() != 0) {
                 viewModel.setPodcastName(podcastName);
                 viewModel.setPodcastDescription(podcastDescription);
@@ -177,9 +177,9 @@ public class MainPodcastDataFragment extends Fragment {
                 if (data != null && data.getData() != null) {
                     Uri selectedImage = data.getData();
                     Bitmap podcastImage = getBitmap(requireActivity().getContentResolver(), selectedImage, 1920, 1080);
-                    viewBinding.fragmentMainPodcastDataImageButtonLoadImage.setImageBitmap(null);
-                    viewBinding.fragmentMainPodcastDataImageButtonLoadImage.setScaleType(ImageView.ScaleType.CENTER_CROP);
-                    viewBinding.fragmentMainPodcastDataImageButtonLoadImage.setImageBitmap(podcastImage);
+                    viewBinding.loadImage.setImageBitmap(null);
+                    viewBinding.loadImage.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                    viewBinding.loadImage.setImageBitmap(podcastImage);
                     viewModel.setPodcastImage(podcastImage);
                 }
         }
