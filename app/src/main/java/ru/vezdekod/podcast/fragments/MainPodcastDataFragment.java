@@ -1,8 +1,11 @@
 package ru.vezdekod.podcast.fragments;
 
+import android.Manifest;
 import android.content.ContentProvider;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
@@ -13,12 +16,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavDirections;
@@ -43,6 +49,10 @@ public class MainPodcastDataFragment extends Fragment {
     private OnFragmentInteractionListener onFragmentInteractionListener;
     private FragmentMainPodcastDataBinding viewBinding;
     private PodcastViewModel viewModel;
+
+    private static final int PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 22;
+
+    private static final int REQUEST_BROWSE_PICTURE = 2;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -78,6 +88,19 @@ public class MainPodcastDataFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        viewBinding.fragmentMainPodcastDataImageButtonLoadImage.setOnClickListener(v -> {
+            if (ContextCompat.checkSelfPermission(requireActivity(),
+                    Manifest.permission.READ_EXTERNAL_STORAGE)
+                    != PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(requireActivity(), "permission not", Toast.LENGTH_SHORT).show();
+
+                requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                        PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE);
+            } else {
+                createImageBrowsingRequest();
+            }
+        });
+
         viewBinding.fragmentMainPodcastDataButtonNext.setOnClickListener(v -> {
             String podcastName = viewBinding.fragmentMainPodcastDataEditTextPodcastName.getText().toString();
             String podcastDescription = viewBinding.fragmentMainPodcastDataEditTextPodcastDescription.getText().toString();
@@ -86,9 +109,8 @@ public class MainPodcastDataFragment extends Fragment {
                 viewModel.setPodcastDescription(podcastDescription);
                 NavDirections navDirections = MainPodcastDataFragmentDirections.actionNavMainPodcastDataToNavAudioEditing();
                 onFragmentInteractionListener.onFragmentInteraction(navDirections);
-            }
-            else {
-                Toast.makeText(requireActivity(), "Должны быть заполнены название и описание",  Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(requireActivity(), "Должны быть заполнены название и описание", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -99,23 +121,98 @@ public class MainPodcastDataFragment extends Fragment {
         });
     }
 
+    private void createImageBrowsingRequest() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), REQUEST_BROWSE_PICTURE);
+    }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if (requestCode == 666 && data != null) {
-            Uri fileUri = data.getData();
-            if (fileUri == null) return;
+        switch (requestCode) {
+            case 666:
+                if (data != null) {
+                    Uri fileUri = data.getData();
+                    if (fileUri == null) return;
 
-            viewModel.setFileUri(fileUri);
+                    viewModel.setFileUri(fileUri);
 
-            MediaPlayer player = new MediaPlayer();
-            try {
-                player.setDataSource(requireContext(), fileUri);
-                viewModel.setMediaPlayer(player);
-            } catch (IOException e) {
-                e.printStackTrace();
-                viewModel.setMediaPlayer(null);
-            }
-            viewBinding.fragmentMainPodcastDataButtonNext.setEnabled(viewModel.getMediaPlayer() != null);
+                    MediaPlayer player = new MediaPlayer();
+                    try {
+                        player.setDataSource(requireContext(), fileUri);
+                        viewModel.setMediaPlayer(player);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        viewModel.setMediaPlayer(null);
+                    }
+                    viewBinding.fragmentMainPodcastDataButtonNext.setEnabled(viewModel.getMediaPlayer() != null);
+                }
+                break;
+            case REQUEST_BROWSE_PICTURE:
+                if (data != null && data.getData() != null) {
+                    Uri selectedImage = data.getData();
+                    Bitmap podcastImage = getBitmap(requireActivity().getContentResolver(), selectedImage, 1920, 1080);
+                    viewBinding.fragmentMainPodcastDataImageButtonLoadImage.setImageBitmap(null);
+                    viewBinding.fragmentMainPodcastDataImageButtonLoadImage.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                    viewBinding.fragmentMainPodcastDataImageButtonLoadImage.setImageBitmap(podcastImage);
+                    viewModel.setPodcastImage(podcastImage);
+                }
         }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (grantResults.length > 0
+                && grantResults[0] == PackageManager.PERMISSION_GRANTED
+                && requestCode == PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE) {
+            createImageBrowsingRequest();
+        }
+    }
+
+    private static Bitmap getBitmap(ContentResolver contentResolver, Uri selectedImage,
+                                    int targetWidth, int targetHeight) {
+        InputStream is = null;
+        try {
+            is = contentResolver.openInputStream(selectedImage);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        final BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeStream(is, null, options);
+
+        try {
+            is = contentResolver.openInputStream(selectedImage);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        options.inSampleSize = calculateInSampleSize(options, targetWidth, targetHeight);
+        options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+        options.inJustDecodeBounds = false;
+        return BitmapFactory.decodeStream(is, null, options);
+    }
+
+    private static int calculateInSampleSize(BitmapFactory.Options options,
+                                             int bitmapWidth, int bitmapHeight) {
+        final int height = options.outHeight;
+        final int width = options.outWidth;
+        int inSampleSize = 1;
+
+        if (height > bitmapHeight || width > bitmapWidth) {
+
+            final int halfHeight = height / 2;
+            final int halfWidth = width / 2;
+
+            while ((halfHeight / inSampleSize) > bitmapHeight
+                    && (halfWidth / inSampleSize) > bitmapWidth) {
+                inSampleSize *= 2;
+            }
+        }
+
+        return inSampleSize;
     }
 }

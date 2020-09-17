@@ -51,6 +51,7 @@ class PodcastPreviewFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         viewBinding.podcastTitleTv.text = viewModel.podcastName
         viewBinding.podcastDescriptionTv.text = viewModel.podcastDescription
+        viewBinding.podcastImagePreviewIv.setImageBitmap(viewModel.podcastImage)
 
         viewBinding.nextButton.setOnClickListener {
             val navDirections: NavDirections =
@@ -82,7 +83,8 @@ class PodcastPreviewFragment : Fragment() {
         viewBinding.timecodeListRecycler.layoutManager = LinearLayoutManager(requireContext())
     }
 
-    private inner class TimecodeViewHolder(val viewBinding: PreviewTimecodeItemBinding) : RecyclerView.ViewHolder(
-        viewBinding.root
-    )
+    private inner class TimecodeViewHolder(val viewBinding: PreviewTimecodeItemBinding) :
+        RecyclerView.ViewHolder(
+            viewBinding.root
+        )
 }
