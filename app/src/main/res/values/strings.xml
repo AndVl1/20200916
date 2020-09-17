@@ -21,4 +21,8 @@
     <string name="change_music">Выбрать музыку</string>
     <string name="back">Back</string>
     <string name="time_to_song1">3:30</string>
+
+    <string name="screen_title_new_podcast">New podcast</string>
+    <string name="screen_title_audio_edit">Edit</string>
+    <string name="screen_title_choose_music">Choose music</string>
 </resources>

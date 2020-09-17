@@ -1,5 +1,6 @@
 package ru.vezdekod.podcast.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -12,17 +13,40 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Objects;
 
+import ru.vezdekod.podcast.OnFragmentInteractionListener;
 import ru.vezdekod.podcast.R;
 
 public class ChooseMusicEffectFragment extends Fragment {
     private EditText searchEditText;
     private RecyclerView listOfMusic;
+
+    private OnFragmentInteractionListener onFragmentInteractionListener = null;
+
+    @Override
+    public void onAttach(@NotNull Context context) {
+        super.onAttach(context);
+        onFragmentInteractionListener = (OnFragmentInteractionListener) context;
+        onFragmentInteractionListener.setBackDirection(ChooseMusicEffectFragmentDirections.actionNavChooseMusicEffectToNavAudioEditing());
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ActionBar actionBar = ((AppCompatActivity) requireActivity()).getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setTitle(R.string.screen_title_choose_music);
+            actionBar.show();
+        }
+    }
 
     @Nullable
     @Override
