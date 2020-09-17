@@ -147,6 +147,8 @@ public class MainPodcastDataFragment extends Fragment {
                         e.printStackTrace();
                         viewModel.setMediaPlayer(null);
                     }
+                    viewBinding.fragmentMainPodcastDataLinearLayoutLoadAudio.setVisibility(View.GONE);
+                    viewBinding.fragmentMainPodcastDataLinearLayoutAudio.setVisibility(View.VISIBLE);
                     viewBinding.fragmentMainPodcastDataButtonNext.setEnabled(viewModel.getMediaPlayer() != null);
                 }
                 break;
