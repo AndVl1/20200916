@@ -16,6 +16,7 @@ import ru.vezdekod.podcast.R
 import ru.vezdekod.podcast.databinding.FragmentPodcastPreviewBinding
 import ru.vezdekod.podcast.databinding.PreviewTimecodeItemBinding
 import ru.vezdekod.podcast.model.PodcastViewModel
+import java.lang.Exception
 
 class PodcastPreviewFragment : Fragment() {
 
@@ -80,6 +81,22 @@ class PodcastPreviewFragment : Fragment() {
 
         viewBinding.timecodeListRecycler.adapter = adapter
         viewBinding.timecodeListRecycler.layoutManager = LinearLayoutManager(requireContext())
+
+
+
+        try {
+            viewModel.mediaPlayer?.prepare()
+        } catch (_ : Exception) {
+        }
+        viewBinding.podcastPlayButton.setOnClickListener {
+            viewModel.mediaPlayer?.apply {
+                if (isPlaying) {
+                    pause()
+                } else {
+                    start()
+                }
+            }
+        }
     }
 
     private inner class TimecodeViewHolder(val viewBinding: PreviewTimecodeItemBinding) :

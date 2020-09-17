@@ -8,14 +8,17 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.NavDirections
 import com.google.android.material.snackbar.Snackbar
 import ru.vezdekod.podcast.OnFragmentInteractionListener
 import ru.vezdekod.podcast.databinding.FragmentLastBinding
+import ru.vezdekod.podcast.model.PodcastViewModel
 
 class LastFragment : Fragment() {
 
     private lateinit var viewBinding: FragmentLastBinding
+    private val viewModel: PodcastViewModel by viewModels({ requireActivity() })
 
     private var onFragmentInteractionListener: OnFragmentInteractionListener? = null
 
@@ -39,7 +42,7 @@ class LastFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         viewBinding.closeMessageButton.setOnClickListener {
-            //TODO return to first screen
+            viewModel.clear()
             val navDirections: NavDirections =
                 LastFragmentDirections.actionNavEndToNavFirst()
             onFragmentInteractionListener?.onFragmentInteraction(navDirections)

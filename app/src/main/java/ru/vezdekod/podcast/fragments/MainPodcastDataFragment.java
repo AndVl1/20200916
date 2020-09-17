@@ -16,6 +16,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -83,6 +84,22 @@ public class MainPodcastDataFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         viewModel = new ViewModelProvider(requireActivity()).get(PodcastViewModel.class);
         viewBinding.fragmentMainPodcastDataButtonNext.setEnabled(viewModel.getMediaPlayer() != null);
+
+        viewBinding.adultContentCb.setChecked(viewModel.getAdultContent());
+        viewBinding.excludeExportCb.setChecked(viewModel.getExcludeFromExport());
+        viewBinding.trailerCb.setChecked(viewModel.getTrailer());
+
+        viewBinding.adultContentCb.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            viewModel.setAdultContent(isChecked);
+        });
+
+        viewBinding.excludeExportCb.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            viewModel.setExcludeFromExport(isChecked);
+        });
+
+        viewBinding.trailerCb.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            viewModel.setTrailer(isChecked);
+        });
     }
 
     @Override
