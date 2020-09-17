@@ -125,18 +125,21 @@
             <include layout="@layout/separator" />
 
             <CheckBox
+                android:id="@+id/adult_content_cb"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:text="Ненормативный контент"
                 android:textSize="16sp" />
 
             <CheckBox
+                android:id="@+id/exclude_export_cb"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:text="Исключить эпизод из экспорта"
                 android:textSize="16sp" />
 
             <CheckBox
+                android:id="@+id/trailer_cb"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:text="Трейлер подкаста"

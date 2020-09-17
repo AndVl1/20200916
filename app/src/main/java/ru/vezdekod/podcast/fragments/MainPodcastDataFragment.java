@@ -1,7 +1,9 @@
 package ru.vezdekod.podcast.fragments;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -99,7 +101,7 @@ public class MainPodcastDataFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        viewBinding.fragmentMainPodcastDataImageButtonLoadImage.setOnClickListener(v -> {
+        viewBinding.loadImage.setOnClickListener(v -> {
             if (ContextCompat.checkSelfPermission(requireActivity(),
                     Manifest.permission.READ_EXTERNAL_STORAGE)
                     != PackageManager.PERMISSION_GRANTED) {
