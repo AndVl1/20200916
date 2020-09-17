@@ -2,9 +2,11 @@ package ru.vezdekod.podcast.fragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +31,8 @@ public class MainPodcastDataFragment extends Fragment {
     private OnFragmentInteractionListener onFragmentInteractionListener;
     private FragmentMainPodcastDataBinding viewBinding;
     private PodcastViewModel viewModel;
+    private static final int REQUEST_CODE_MUSIC = 666;
+    private static final int REQUEST_CODE_IMAGE = 111;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -73,27 +77,45 @@ public class MainPodcastDataFragment extends Fragment {
         viewBinding.loadAudioButton.setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
             intent.setType("audio/*");
-            startActivityForResult(Intent.createChooser(intent, "Select audio"), 666);
+            startActivityForResult(Intent.createChooser(intent, "Select audio"), REQUEST_CODE_MUSIC);
+        });
+
+        viewBinding.loadImage.setOnClickListener(v -> {
+            Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+            intent.setType("image/*");
+            startActivityForResult(Intent.createChooser(intent, "Select image"), REQUEST_CODE_IMAGE);
         });
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if (requestCode == 666 && data != null) {
+        if (data != null) {
             Uri fileUri = data.getData();
             if (fileUri == null) return;
+            if (requestCode == REQUEST_CODE_MUSIC) {
 
-            viewModel.setFileUri(fileUri);
+                viewModel.setFileUri(fileUri);
 
-            MediaPlayer player = new MediaPlayer();
-            try {
-                player.setDataSource(requireContext(), fileUri);
-                viewModel.setMediaPlayer(player);
-            } catch (IOException e) {
-                e.printStackTrace();
-                viewModel.setMediaPlayer(null);
+                MediaPlayer player = new MediaPlayer();
+                try {
+                    player.setDataSource(requireContext(), fileUri);
+                    viewModel.setMediaPlayer(player);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    viewModel.setMediaPlayer(null);
+                }
+                viewBinding.fragmentMainPodcastDataButtonNext.setEnabled(viewModel.getMediaPlayer() != null);
             }
-            viewBinding.fragmentMainPodcastDataButtonNext.setEnabled(viewModel.getMediaPlayer() != null);
+
+            if (requestCode == REQUEST_CODE_IMAGE) {
+                Bitmap bitmap = null;
+                try {
+                    bitmap = MediaStore.Images.Media.getBitmap(requireActivity().getContentResolver(), fileUri);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                viewBinding.loadImage.setImageBitmap(bitmap);
+            }
         }
     }
 }
