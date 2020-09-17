@@ -17,7 +17,7 @@
             android:orientation="horizontal">
 
             <ImageButton
-                android:id="@+id/fragment_main_podcast_data___image_button___load_image"
+                android:id="@+id/load_image"
                 android:layout_width="74dp"
                 android:layout_height="74dp"
                 android:layout_marginEnd="12dp"
@@ -39,7 +39,7 @@
                     android:text="Название" />
 
                 <EditText
-                    android:id="@+id/fragment_main_podcast_data___edit_text___podcast_name"
+                    android:id="@+id/podcast_name_tv"
                     style="@style/VkEditText"
                     android:layout_width="match_parent"
                     android:layout_height="44dp"
@@ -62,7 +62,7 @@
                 android:text="Описание подкаста" />
 
             <EditText
-                android:id="@+id/fragment_main_podcast_data___edit_text___podcast_description"
+                android:id="@+id/podcast_description_tv"
                 style="@style/VkEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -181,18 +181,21 @@
             <include layout="@layout/separator" />
 
             <CheckBox
+                android:id="@+id/adult_content_cb"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:text="Ненормативный контент"
                 android:textSize="16sp" />
 
             <CheckBox
+                android:id="@+id/exclude_export_cb"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:text="Исключить эпизод из экспорта"
                 android:textSize="16sp" />
 
             <CheckBox
+                android:id="@+id/trailer_cb"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:text="Трейлер подкаста"

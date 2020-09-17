@@ -55,7 +55,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
-                    tools:text="Сообщество 'ПапаDogs'" />
+                    android:text="Сообщество 'ПапаDogs'" />
 
                 <TextView
                     android:id="@+id/podcast_time_tv"

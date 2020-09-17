@@ -16,4 +16,21 @@ class PodcastViewModel : ViewModel() {
     var fileUri: Uri? = null
 
     val timecodes = mutableListOf<TimecodeData>()
+
+    var adultContent = false
+    var excludeFromExport = false
+    var trailer = false
+
+    fun clear() {
+        podcastName = null
+        podcastDescription = null
+        podcastImage = null
+        mediaPlayer?.release()
+        mediaPlayer = null
+        fileUri = null
+        timecodes.clear()
+        adultContent = false
+        excludeFromExport = false
+        trailer = false
+    }
 }
