@@ -3,7 +3,6 @@ package ru.vezdekod.podcast.fragments;
 import android.Manifest;
 import android.content.ContentProvider;
 import android.content.ContentResolver;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -12,7 +11,8 @@ import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
+import android.os.ParcelFileDescriptor;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,9 +29,15 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavDirections;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileDescriptor;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.util.Objects;
 
 import ru.vezdekod.podcast.OnFragmentInteractionListener;
 import ru.vezdekod.podcast.R;
@@ -69,9 +75,8 @@ public class MainPodcastDataFragment extends Fragment {
         super.onResume();
         ActionBar actionBar = ((AppCompatActivity) requireActivity()).getSupportActionBar();
         if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.show();
             actionBar.setTitle(R.string.screen_title_new_podcast);
+            actionBar.show();
         }
     }
 
@@ -80,12 +85,28 @@ public class MainPodcastDataFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         viewModel = new ViewModelProvider(requireActivity()).get(PodcastViewModel.class);
         viewBinding.fragmentMainPodcastDataButtonNext.setEnabled(viewModel.getMediaPlayer() != null);
+
+        viewBinding.adultContentCb.setChecked(viewModel.getAdultContent());
+        viewBinding.excludeExportCb.setChecked(viewModel.getExcludeFromExport());
+        viewBinding.trailerCb.setChecked(viewModel.getTrailer());
+
+        viewBinding.adultContentCb.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            viewModel.setAdultContent(isChecked);
+        });
+
+        viewBinding.excludeExportCb.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            viewModel.setExcludeFromExport(isChecked);
+        });
+
+        viewBinding.trailerCb.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            viewModel.setTrailer(isChecked);
+        });
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        viewBinding.fragmentMainPodcastDataImageButtonLoadImage.setOnClickListener(v -> {
+        viewBinding.loadImage.setOnClickListener(v -> {
             if (ContextCompat.checkSelfPermission(requireActivity(),
                     Manifest.permission.READ_EXTERNAL_STORAGE)
                     != PackageManager.PERMISSION_GRANTED) {
@@ -99,8 +120,8 @@ public class MainPodcastDataFragment extends Fragment {
         });
 
         viewBinding.fragmentMainPodcastDataButtonNext.setOnClickListener(v -> {
-            String podcastName = viewBinding.fragmentMainPodcastDataEditTextPodcastName.getText().toString();
-            String podcastDescription = viewBinding.fragmentMainPodcastDataEditTextPodcastDescription.getText().toString();
+            String podcastName = viewBinding.podcastNameTv.getText().toString();
+            String podcastDescription = viewBinding.podcastDescriptionTv.getText().toString();
             if (podcastName.length() != 0 && podcastDescription.length() != 0) {
                 viewModel.setPodcastName(podcastName);
                 viewModel.setPodcastDescription(podcastDescription);
@@ -119,13 +140,7 @@ public class MainPodcastDataFragment extends Fragment {
         viewBinding.loadAudioButton.setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
             intent.setType("audio/*");
-            startActivityForResult(Intent.createChooser(intent, "Select audio"), REQUEST_CODE_MUSIC);
-        });
-
-        viewBinding.fragmentMainPodcastDataImageButtonLoadImage.setOnClickListener(v -> {
-            Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
-            intent.setType("image/*");
-            startActivityForResult(Intent.createChooser(intent, "Select image"), REQUEST_CODE_IMAGE);
+            startActivityForResult(Intent.createChooser(intent, "Select audio"), 666);
         });
     }
 
@@ -164,9 +179,9 @@ public class MainPodcastDataFragment extends Fragment {
                 if (data != null && data.getData() != null) {
                     Uri selectedImage = data.getData();
                     Bitmap podcastImage = getBitmap(requireActivity().getContentResolver(), selectedImage, 1920, 1080);
-                    viewBinding.fragmentMainPodcastDataImageButtonLoadImage.setImageBitmap(null);
-                    viewBinding.fragmentMainPodcastDataImageButtonLoadImage.setScaleType(ImageView.ScaleType.CENTER_CROP);
-                    viewBinding.fragmentMainPodcastDataImageButtonLoadImage.setImageBitmap(podcastImage);
+                    viewBinding.loadImage.setImageBitmap(null);
+                    viewBinding.loadImage.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                    viewBinding.loadImage.setImageBitmap(podcastImage);
                     viewModel.setPodcastImage(podcastImage);
                 }
         }
