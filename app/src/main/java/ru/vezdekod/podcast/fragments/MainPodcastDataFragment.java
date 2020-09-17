@@ -160,7 +160,7 @@ public class MainPodcastDataFragment extends Fragment {
                     viewBinding.fragmentMainPodcastDataButtonNext.setEnabled(viewModel.getMediaPlayer() != null);
                 }
                 break;
-            case REQUEST_BROWSE_PICTURE:
+            case REQUEST_CODE_IMAGE:
                 if (data != null && data.getData() != null) {
                     Uri selectedImage = data.getData();
                     Bitmap podcastImage = getBitmap(requireActivity().getContentResolver(), selectedImage, 1920, 1080);
